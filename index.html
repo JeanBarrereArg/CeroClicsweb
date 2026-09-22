@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cero.clics — Soluciones para inmobiliarias</title>
+<meta name="description" content="Anabel Britos y Jean Barrère: procesos y tecnología para inmobiliarias. Ayudamos a responder consultas de WhatsApp y portales al instante, y a agendar visitas sin superposiciones ni olvidos.">
+
+<link rel="icon" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<meta name="theme-color" content="#101a2c">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="cero.clics">
+<meta property="og:title" content="cero.clics — Soluciones para inmobiliarias">
+<meta property="og:description" content="Anabel Britos y Jean Barrère: procesos y tecnología para inmobiliarias. Ayudamos a responder consultas de WhatsApp y portales al instante, y a agendar visitas sin superposiciones ni olvidos.">
+<meta property="og:image" content="assets/logo.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion.css">
+<style>
+  :root {
+    --ink:#1c2436; --ink-soft:#5b6577; --clay:#c1531c; --clay-dark:#9c4216;
+    --sand:#d9682e; --sand-light:#e8996b; --paper:#ffffff; --paper-deep:#e8e2d6; --night:#101a2c;
+    --azul:#163a52; --azul-dark:#0f2a3c;
+    --mk-primario:#c1531c; --mk-secundario:#d9682e; --mk-fondo:#101a2c; --mk-texto:#f4f1ea;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+  html, body { margin:0; padding:0; background:var(--paper); color:var(--ink); font-family:'Manrope',sans-serif; }
+  h1,h2,h3,.display { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; letter-spacing:-.01em; margin:0; }
+  p { line-height:1.6; margin:0; }
+  img { max-width:100%; display:block; }
+  a { color:inherit; }
+  section { position:relative; }
+
+  /* ---------- Utilidades ---------- */
+  .wrap { max-width:1180px; margin:0 auto; padding-left:clamp(1.2rem,5vw,3rem); padding-right:clamp(1.2rem,5vw,3rem); }
+  .eyebrow { display:block; font-family:'Manrope',sans-serif; font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--clay); margin-bottom:1rem; }
+  .dark .eyebrow { color:var(--sand); }
+  .pad { padding-top:clamp(4.5rem,10vw,8rem); padding-bottom:clamp(4.5rem,10vw,8rem); }
+  .dark { background:var(--night); color:var(--paper); }
+  .alt { background:#e4e8ee; }
+
+  /* ---------- Botones ---------- */
+  .btn { display:inline-flex; align-items:center; gap:.6rem; padding:1rem 1.7rem; border-radius:99px; text-decoration:none; font-weight:700; font-size:.92rem; transition:transform .3s cubic-bezier(.22,1,.36,1), background .25s, color .25s, border-color .25s, gap .25s; }
+  .btn:hover { gap:.9rem; }
+  .btn-solid { background:transparent; border:1.5px solid #fff; color:#fff; }
+  .btn-solid:hover { background:#fff; border-color:#fff; color:var(--night); }
+  .btn-outline-dark { border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-outline-dark:hover { background:var(--ink); color:var(--paper); }
+  .btn-outline-light { border:1.5px solid color-mix(in srgb, #fff 55%, transparent); color:#fff; }
+  .btn-outline-light:hover { border-color:#fff; background:#fff; color:var(--night); }
+  .btn-sm { padding:.78rem 1.3rem; font-size:.85rem; }
+
+  /* ---------- Header ---------- */
+  .site-header { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.4rem; color:#fff; transition:background .35s ease, padding .35s ease, border-color .35s ease; border-bottom:1px solid transparent; }
+  .site-header.on { background:var(--night); padding:.65rem 1.4rem; border-color:transparent; }
+  .site-header .brand { display:flex; flex-direction:column; align-items:flex-start; gap:.35rem; text-decoration:none; }
+  .logo-badge { height:72px; width:auto; border-radius:11px; box-shadow:0 6px 18px -8px rgba(0,0,0,.5); transition:height .3s ease; }
+  .site-header.on .logo-badge { height:46px; }
+  .brand-tag { font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; opacity:.85; white-space:nowrap; transition:opacity .25s, max-height .25s, margin .25s; max-height:2em; }
+  .site-header.on .brand-tag { opacity:0; max-height:0; overflow:hidden; }
+  .site-header .navlinks { display:flex; align-items:center; gap:2.1rem; }
+  .site-header .navlinks a { text-decoration:none; color:inherit; font-size:.85rem; font-weight:600; opacity:.9; padding-bottom:.2rem; border-bottom:1.5px solid transparent; transition:opacity .2s, border-color .2s; }
+  .site-header .navlinks a:hover { opacity:1; border-color:currentColor; }
+  .site-header .right { display:flex; align-items:center; gap:1.4rem; }
+  .site-header.on { color:#fff; }
+  .menu-btn { display:none; background:none; border:0; padding:.65rem; margin:-.65rem 0; color:inherit; font:inherit; cursor:pointer; align-items:center; gap:.5rem; font-size:.8rem; font-weight:600; }
+  .menu-btn .bars { display:flex; flex-direction:column; gap:4px; width:20px; }
+  .menu-btn .bars span { display:block; height:1.5px; background:currentColor; }
+  .hdr-cta { display:inline-flex; align-items:center; padding:.68rem 1.1rem; border-radius:99px; border:1.5px solid #fff; color:#fff; text-decoration:none; font-weight:700; font-size:.82rem; white-space:nowrap; transition:background .25s, color .25s; }
+  .hdr-cta:hover { background:#fff; border-color:#fff; color:var(--night); }
+
+  @media (max-width:900px) { .site-header .navlinks { display:none; } .menu-btn { display:inline-flex; } }
+  @media (max-width:400px) { .menu-btn .mtxt { display:none; } }
+
+  /* ---------- Menú mobile ---------- */
+  .mobile-menu { position:fixed; inset:0; z-index:700; background:var(--night); color:var(--paper); display:flex; flex-direction:column; justify-content:space-between; padding:1.3rem 1.4rem 2.4rem; transform:translateY(-100%); transition:transform .5s cubic-bezier(.76,0,.24,1); }
+  .mobile-menu.open { transform:translateY(0); }
+  .mobile-menu-top { display:flex; align-items:center; justify-content:space-between; }
+  .menu-close { background:none; border:0; color:var(--paper); font-size:1.6rem; line-height:1; padding:.3rem; cursor:pointer; }
+  .mobile-menu-links { display:flex; flex-direction:column; gap:.3rem; margin-top:2.5rem; }
+  .mobile-menu-links a { text-decoration:none; color:var(--paper); font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(2.1rem,10vw,3rem); line-height:1.3; opacity:.95; }
+  .mobile-menu-links a:hover { color:var(--sand); }
+  .mobile-menu-cta { display:inline-flex; align-self:flex-start; margin-top:2rem; padding:1rem 1.7rem; border:1.5px solid var(--paper); border-radius:99px; color:var(--paper); text-decoration:none; font-weight:700; font-size:.9rem; transition:background .25s, color .25s; }
+  .mobile-menu-cta:hover { background:var(--paper); border-color:var(--paper); color:var(--night); }
+  body.menu-open { overflow:hidden; }
+
+  /* ---------- HERO ---------- */
+  .hero { min-height:100svh; display:flex; flex-direction:column; justify-content:center; position:relative; color:#fff; overflow:hidden; background:#101a2c; }
+  .hero-content { position:relative; z-index:2; padding:clamp(6rem,10vw,3rem) clamp(1.5rem,5vw,3rem) clamp(3rem,7vw,4.5rem); }
+  .hero h1 { font-size:clamp(2.5rem,7.6vw,5.1rem); line-height:1.03; margin:0; }
+  .hero h1 .hline { display:block; }
+  .hero .sub { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(1.1rem,2.5vw,1.6rem); color:var(--sand); margin:1rem 0 1.4rem; max-width:30ch; }
+  .hero .lead { max-width:54ch; color:color-mix(in srgb, #fff 78%, transparent); font-size:1.05rem; margin-bottom:2.2rem; }
+  .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+  .scroll-cue { position:absolute; left:50%; bottom:1.6rem; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:.5rem; color:#fff; opacity:.7; font-size:.75rem; }
+  @media (max-width:700px), (max-height:700px) { .scroll-cue { display:none; } }
+  .scroll-cue .line { width:1px; height:34px; background:linear-gradient(#fff, transparent); animation:scrollcue 1.8s ease-in-out infinite; }
+  @keyframes scrollcue { 0%{ transform:scaleY(.3); transform-origin:top; } 50%{ transform:scaleY(1); transform-origin:top; } 51%{ transform-origin:bottom; } 100%{ transform:scaleY(.3); transform-origin:bottom; } }
+
+  /* ---------- Manifiesto corto ---------- */
+  .stack-lines { text-align:center; }
+  .stack-lines .line { font-size:clamp(1.8rem,6.4vw,3.8rem); line-height:1.14; margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; }
+  .stack-lines .line + .line { margin-top:.1em; }
+  .stack-lines .accent { color:var(--sand); }
+
+  /* ---------- Quiénes somos: dos socios ---------- */
+  .socios-head { max-width:60ch; margin-bottom:clamp(2.2rem,5vw,3.2rem); }
+  .socios-head h2 { font-size:clamp(1.8rem,4.6vw,2.8rem); margin-top:.4rem; }
+  .socios-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.4rem,3vw,2rem); }
+  .socio-card { background:#fff; border:1px solid color-mix(in srgb, var(--ink) 10%, transparent); border-radius:22px; padding:clamp(1.8rem,4vw,2.4rem); display:flex; flex-direction:column; gap:1.2rem; }
+  .socio-card .quien { font-size:1.02rem; font-weight:800; font-family:'Bricolage Grotesque',sans-serif; }
+  .socio-card .quien b { color:var(--clay); }
+  .socio-card .rol { font-size:.85rem; color:var(--ink-soft); font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+  .socio-card .bio { color:var(--ink-soft); font-size:.96rem; }
+  .socio-card .quote { margin-top:auto; background:var(--night); color:#fff; border-radius:16px; padding:1.3rem 1.4rem; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1rem; line-height:1.42; }
+  .socios-join { text-align:center; margin-top:clamp(1.8rem,4vw,2.6rem); font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(1.1rem,2.6vw,1.4rem); color:var(--ink); }
+  .socios-join span { color:var(--clay); }
+  @media (max-width:820px) { .socios-grid { grid-template-columns:1fr; } }
+
+  /* ---------- Marquee divisor ---------- */
+  .divider-marquee { padding:1.6rem 0; border-top:1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-bottom:1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+  .divider-marquee .mk-marquee-track span { font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(1rem,2.4vw,1.3rem); font-weight:700; color:var(--ink-soft); }
+  .divider-marquee .mk-marquee-track span.sep { color:var(--clay); margin:0 1.6rem; }
+
+  /* ---------- Comparativa Hoy / Con CeroClics ---------- */
+  .comp-head { text-align:center; max-width:44ch; margin:0 auto clamp(2.4rem,6vw,3.4rem); }
+  .comp-head h2 { font-size:clamp(1.9rem,5vw,3rem); margin-top:.4rem; }
+  .comp-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:24px; overflow:hidden; }
+  .comp-col { padding:clamp(2rem,4.5vw,2.8rem); }
+  .comp-col.hoy { background:color-mix(in srgb, var(--paper) 6%, var(--night)); color:color-mix(in srgb, #fff 55%, transparent); }
+  .comp-col.con { background:var(--clay); color:#fff; }
+  .comp-tag { display:inline-flex; align-items:center; gap:.5rem; font-size:.8rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1.1rem; }
+  .comp-col.hoy .comp-tag::before { content:"✕"; color:color-mix(in srgb, #fff 45%, transparent); }
+  .comp-col.con .comp-tag::before { content:"✓"; }
+  .comp-col p.txt { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(1.05rem,2vw,1.28rem); line-height:1.48; }
+  .comp-col.hoy p.txt { color:color-mix(in srgb, #fff 82%, transparent); }
+  @media (max-width:760px) { .comp-grid { grid-template-columns:1fr; } }
+
+  /* ---------- Escenario full-bleed ---------- */
+  .stage { position:relative; min-height:70vh; display:flex; align-items:center; color:#fff; overflow:hidden; background:var(--night); }
+  .stage-content { position:relative; z-index:2; padding:clamp(3rem,6vw,4rem); width:100%; text-align:center; }
+  .stage-content h2 { font-size:clamp(2rem,6.5vw,4rem); line-height:1.05; margin:0 auto 1.2rem; max-width:18ch; }
+  .stage-content p { max-width:50ch; margin:0 auto 1.8rem; color:color-mix(in srgb, #fff 85%, transparent); font-size:1.05rem; }
+  .stage-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  /* ---------- Proceso ---------- */
+  .proceso-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.5rem,3vw,2.5rem); }
+  .proceso-item { display:flex; gap:1.1rem; align-items:flex-start; padding-top:1.2rem; border-top:1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+  .proceso-num { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:var(--clay); font-size:1.3rem; flex-shrink:0; width:2.6rem; }
+  .proceso-item h3 { font-size:1.2rem; margin-bottom:.3rem; }
+  .proceso-item p { font-size:.94rem; color:var(--ink-soft); }
+  @media (max-width:700px) { .proceso-grid { grid-template-columns:1fr; } }
+
+  /* ---------- Servicios ---------- */
+  .servicios-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+  .svc-card { background:var(--paper); border:1px solid color-mix(in srgb, var(--ink) 10%, transparent); border-radius:18px; padding:clamp(1.3rem,2.5vw,1.6rem); transition:box-shadow .3s; }
+  .svc-card:hover { box-shadow:0 20px 44px -22px color-mix(in srgb, var(--clay) 40%, transparent); }
+  .svc-card h3 { font-size:1.05rem; margin-bottom:.4rem; }
+  .svc-card p { font-size:.88rem; color:var(--ink-soft); }
+  @media (max-width:900px) { .servicios-grid { grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px) { .servicios-grid { grid-template-columns:1fr; } }
+
+  /* ---------- Banner otros rubros ---------- */
+  .web-banner { background:var(--night); color:#fff; padding:clamp(1.7rem,4vw,2.3rem) 0; }
+  .web-banner-inner { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+  .web-banner-inner p { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(1.05rem,2.4vw,1.35rem); max-width:48ch; margin:0; }
+  .web-banner-inner p strong { color:var(--sand); }
+  .web-banner .btn { flex-shrink:0; }
+
+  /* ---------- Diagnóstico gratis (badge-line) ---------- */
+  .diag-row { display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(2rem,6vw,4rem); align-items:start; }
+  .diag-row h2 { font-size:clamp(1.8rem,4.6vw,2.9rem); margin:0 0 .8rem; line-height:1.12; }
+  .diag-row p { color:var(--ink-soft); max-width:44ch; }
+  .badge-line { display:flex; align-items:flex-start; gap:1rem; padding-top:1.1rem; border-top:1px solid color-mix(in srgb, var(--ink) 15%, transparent); font-size:.9rem; color:var(--ink-soft); }
+  .badge-line .num { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:var(--ink); font-size:2.4rem; line-height:1; flex-shrink:0; }
+  .badge-line strong { color:var(--ink); display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1rem; }
+  @media (max-width:760px) { .diag-row { grid-template-columns:1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { display:flex; flex-direction:column; gap:0; max-width:760px; }
+  .faq-item { border-bottom:1px solid color-mix(in srgb, var(--ink) 14%, transparent); padding:1.4rem 0; }
+  .faq-item summary { cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1.08rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary .plus { flex-shrink:0; font-size:1.4rem; font-weight:400; color:var(--clay); transition:transform .25s; }
+  .faq-item[open] summary .plus { transform:rotate(45deg); }
+  .faq-item p { margin-top:.9rem; color:var(--ink-soft); font-size:.95rem; max-width:64ch; }
+
+  /* ---------- CTA final ---------- */
+  .cta-final { text-align:center; }
+  .cta-final h2 { font-size:clamp(2.1rem,7vw,4.2rem); line-height:1.08; margin:0 auto 1.4rem; max-width:18ch; }
+  .cta-final p { max-width:44ch; margin:0 auto 2.2rem; color:color-mix(in srgb, var(--paper) 85%, transparent); font-size:1.05rem; }
+  .cta-final .row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .cta-final .znote { margin-top:1.8rem; font-size:.85rem; color:color-mix(in srgb, var(--paper) 60%, transparent); }
+
+  /* ---------- Footer ---------- */
+  footer.close { background:var(--paper); padding:clamp(3rem,8vw,5rem) 1.4rem 2.2rem; }
+  footer.close .fwrap { max-width:900px; margin:0 auto; text-align:center; }
+  footer.close .fname { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(1.5rem,4vw,2.1rem); }
+  footer.close .fclaim { color:var(--ink-soft); margin:.8rem 0 2.4rem; font-size:.92rem; line-height:1.7; }
+  .footer-people { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; text-align:left; margin-bottom:2.4rem; }
+  .footer-person { border:1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius:16px; padding:1.3rem 1.4rem; }
+  .footer-person .fp-name { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.05rem; margin-bottom:.7rem; }
+  .footer-person .fp-links { display:flex; flex-direction:column; gap:.55rem; font-size:.88rem; font-weight:700; }
+  .footer-person .fp-links a { display:inline-flex; align-items:center; gap:.55rem; text-decoration:none; color:var(--ink-soft); border-bottom:1.5px solid transparent; width:fit-content; }
+  .footer-person .fp-links a svg { width:16px; height:16px; flex-shrink:0; color:var(--clay); }
+  .footer-person .fp-links a:hover { color:var(--ink); border-color:var(--clay); }
+  @media (max-width:560px) { .footer-people { grid-template-columns:1fr; } }
+  footer.close .fback { display:inline-block; font-size:.85rem; font-weight:700; color:var(--ink-soft); text-decoration:none; border-bottom:1.5px solid color-mix(in srgb, var(--ink-soft) 45%, transparent); padding-bottom:.2rem; margin-bottom:2.2rem; }
+  footer.close .fback:hover { color:var(--ink); border-color:var(--ink); }
+  footer.close .fend { font-size:.78rem; color:color-mix(in srgb, var(--ink-soft) 70%, transparent); }
+
+  /* ---------- Volver arriba ---------- */
+  .back-top { position:fixed; right:16px; bottom:16px; z-index:600; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--night); border:1.5px solid color-mix(in srgb, var(--paper) 30%, transparent); color:var(--paper); text-decoration:none; font-size:1.2rem; }
+  .back-top:hover { background:var(--clay); }
+
+  /* ---------- Resaltar "Quiero mi diagnóstico" al entrar en pantalla ---------- */
+  .btn-highlight { animation:mkBounceGlow 1.2s ease-in-out 3; }
+  @keyframes mkBounceGlow {
+    0%, 100% { transform:scale(1); box-shadow:0 0 0 rgba(255,255,255,0); }
+    50% { transform:scale(1.06); box-shadow:0 0 18px 4px rgba(255,255,255,.55); }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn-highlight { animation:none; } }
+</style>
+</head>
+<body>
+
+<span id="top"></span>
+
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top"><img class="logo-badge" src="assets/logo.jpg" alt="cero.clics"><span class="brand-tag">Soluciones para inmobiliarias</span></a>
+  <nav class="navlinks">
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Quiénes somos</a>
+    <a href="#faq">Preguntas</a>
+  </nav>
+  <div class="right">
+    <a class="hdr-cta" href="#contacto">Escribinos →</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><span class="bars"><span></span><span></span></span><span class="mtxt">Menú</span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a class="brand" href="#top"><img class="logo-badge" src="assets/logo.jpg" alt="cero.clics"><span class="brand-tag">Soluciones para inmobiliarias</span></a>
+    <button class="menu-close" id="menuClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav class="mobile-menu-links">
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Quiénes somos</a>
+    <a href="#faq">Preguntas</a>
+  </nav>
+  <a class="mobile-menu-cta" href="#contacto">Escribinos →</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1><span class="mk-split hline">Ninguna consulta</span><span class="mk-split hline">debería enfriarse.</span></h1>
+    <p class="sub">Menos tiempo de espera. Más oportunidades de venta.</p>
+    <p class="lead">Ayudamos a inmobiliarias a convertir más consultas en operaciones exitosas con respuestas en segundos y visitas agendadas sin fricción.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-outline-light" href="#proceso">Ver cómo trabajamos ↓</a>
+      <a class="btn btn-outline-light" href="#contacto">Escribinos →</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ MANIFIESTO CORTO ============ -->
+<section class="pad dark">
+  <div class="wrap stack-lines">
+    <p class="line mk-reveal">Te escuchamos.</p>
+    <p class="line mk-reveal">Entendemos tu negocio.</p>
+    <p class="line mk-reveal accent">Después elegimos la herramienta.</p>
+  </div>
+</section>
+
+<!-- ============ MARQUEE DIVISOR ============ -->
+<div class="divider-marquee">
+  <div class="mk-marquee"><div class="mk-marquee-track">
+    <span>Procesos comerciales</span><span class="sep">✦</span><span>Automatización</span><span class="sep">✦</span><span>Web</span><span class="sep">✦</span><span>IA</span><span class="sep">✦</span><span>Diagnóstico gratis</span><span class="sep">✦</span>
+  </div></div>
+</div>
+
+<!-- ============ LA TECNOLOGÍA EN EL DÍA A DÍA ============ -->
+<section class="pad alt">
+  <div class="wrap">
+    <div class="comp-head">
+      <span class="eyebrow mk-reveal" style="text-align:center">Por qué cero.clics</span>
+      <h2 class="mk-reveal">La tecnología en el día a día.</h2>
+    </div>
+    <div class="comp-grid mk-reveal">
+      <div class="comp-col hoy">
+        <span class="comp-tag">Hoy</span>
+        <p class="txt">Te ofrecen sistemas complejos o plataformas pesadas que prometen revolucionar todo, pero terminan abandonadas porque nadie tiene tiempo de aprenderlas ni encajan con la realidad de la oficina.</p>
+      </div>
+      <div class="comp-col con">
+        <span class="comp-tag">Con cero.clics</span>
+        <p class="txt">Partimos de tus problemas reales que frenan el trabajo del equipo y armamos soluciones simples, concretas y aplicables desde el primer día, sin cambiarles la forma de trabajar ni complicarles la vida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESCENARIO: DIAGNÓSTICO GRATIS ============ -->
+<section class="stage">
+  <div class="stage-content mk-reveal">
+    <span class="eyebrow" style="color:var(--sand); text-align:center">Diagnóstico gratis</span>
+    <h2>30 minutos que valen la pena.</h2>
+    <p>Nos contás cómo trabaja tu equipo hoy y buscamos juntos dónde necesitan ser más eficientes. No prometemos resultados imposibles: prometemos salir de esa charla sabiendo si vale la pena avanzar, y con qué.</p>
+    <div class="stage-ctas">
+      <a class="btn btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener">Quiero mi diagnóstico →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="pad" id="proceso">
+  <div class="wrap">
+    <span class="eyebrow mk-reveal">Cómo trabajamos</span>
+    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">Cuatro pasos, sin vueltas.</h2>
+    <div class="proceso-grid">
+      <div class="proceso-item mk-reveal"><span class="proceso-num">01</span><div><h3>Escuchamos</h3><p>Nos contás qué tareas o procesos se volvieron un dolor de cabeza para el equipo, con tus palabras. Cero tecnicismos de nuestro lado.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">02</span><div><h3>Entendemos</h3><p>Revisamos cómo se mueve la operación diaria: consultas, seguimientos, visitas y cierres.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">03</span><div><h3>Priorizamos</h3><p>Qué frena más el trabajo del equipo y qué conviene resolver primero.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">04</span><div><h3>Armamos</h3><p>La solución simple y concreta, aplicable desde el primer día, sin cambiarles la forma de trabajar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="pad alt" id="servicios">
+  <div class="wrap">
+    <span class="eyebrow mk-reveal">En qué podemos ayudarte</span>
+    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">Procesos y tecnología, de la mano.</h2>
+    <div class="servicios-grid">
+      <div class="svc-card mk-card mk-reveal"><h3>Procesos comerciales</h3><p>Que el seguimiento de cada consulta no dependa de la memoria de nadie.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.05s"><h3>Automatización</h3><p>Que las tareas repetitivas se hagan solas.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.1s"><h3>Web</h3><p>Presencia digital pensada para convertir, no solo para existir.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.15s"><h3>IA</h3><p>Respuestas inteligentes conectadas a los datos reales del negocio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTROS RUBROS ============ -->
+<section class="web-banner">
+  <div class="wrap web-banner-inner mk-reveal">
+    <p>Hoy trabajamos sobre todo con <strong>inmobiliarias</strong> — ¿tenés otro rubro con el mismo problema? Escribinos igual.</p>
+    <a class="btn btn-outline-light" href="#contacto">Escribinos →</a>
+  </div>
+</section>
+
+<!-- ============ DIAGNÓSTICO (badge) ============ -->
+<section class="pad">
+  <div class="wrap diag-row">
+    <div class="mk-reveal">
+      <span class="eyebrow">Antes de sumar nada</span>
+      <h2>Primero entendemos tu negocio. Después elegimos la herramienta.</h2>
+      <p>No llegamos con una herramienta para buscarle un problema. Primero preguntamos qué hacés, cómo lo hacés y qué te lleva tiempo.</p>
+    </div>
+    <div class="badge-line mk-reveal">
+      <span class="num">30</span>
+      <span><strong>Minutos, sin compromiso</strong>Contactanos para un diagnóstico gratis y sin tecnicismos.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIÉNES SOMOS ============ -->
+<section class="pad" id="nosotros">
+  <div class="wrap">
+    <div class="socios-head">
+      <span class="eyebrow mk-reveal">Quiénes estamos del otro lado</span>
+      <h2 class="mk-reveal">Dos miradas distintas, un mismo objetivo.</h2>
+    </div>
+    <div class="socios-grid">
+      <div class="socio-card mk-card mk-reveal">
+        <div>
+          <p class="quien">Soy <b>Anabel Britos</b>, Analista Universitaria de Sistemas.</p>
+          <p class="rol">Automatización · Web · IA</p>
+        </div>
+        <p class="bio">Gestión de procesos y de proyectos. Antes de automatizar algo, primero entiendo cómo funciona: es la misma lógica en cualquier rubro, incluida una inmobiliaria. La tecnología debería hacernos la vida más fácil, no agregar más pasos.</p>
+        <div class="quote">"No empiezo mostrando herramientas: empiezo escuchando cómo trabajás. Vos contás el problema; traducirlo en una solución es mi parte."</div>
+      </div>
+      <div class="socio-card mk-card mk-reveal" style="transition-delay:.1s">
+        <div>
+          <p class="quien">Soy <b>Jean Barrère</b>, especialista en Operaciones y Procesos Comerciales.</p>
+          <p class="rol">Gestión operativa · Procesos comerciales · IA</p>
+        </div>
+        <p class="bio">Años trabajando adentro de la gestión operativa y de negocios, no mirándola desde afuera. Es la misma lógica en cualquier rubro: en una inmobiliaria, una consulta sin responder o un seguimiento colgado es directamente una comisión menos.</p>
+        <div class="quote">"No llego a decirte cómo tasar o vender: me siento a entender dónde se traba la rueda. Vos ponés el foco comercial."</div>
+      </div>
+    </div>
+    <p class="socios-join mk-reveal">Procesos que ordenan <span>+</span> tecnología que ejecuta. Por eso somos <span>cero.clics</span>.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="pad alt" id="faq">
+  <div class="wrap">
+    <span class="eyebrow mk-reveal">Preguntas que suelen aparecer</span>
+    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.2rem">¿Te suena?</h2>
+    <div class="faq-list mk-reveal">
+      <details class="faq-item">
+        <summary>¿Tengo que cambiar de sistema para usar esto?<span class="plus">+</span></summary>
+        <p>No. Se conecta con WhatsApp, los portales que ya usás y tu forma de trabajar actual. No hace falta migrar nada.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿El interesado se da cuenta de que le contesta un sistema?<span class="plus">+</span></summary>
+        <p>Sí, y está bien que sea así. Se presenta desde el primer mensaje y avisa que si necesitan hablar con alguien del equipo, los deriva. Lo que valora el que consulta no es creer que le escribe una persona: es que le contesten a las once de la noche con los datos correctos de la propiedad.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa si preguntan algo que el sistema no sabe responder?<span class="plus">+</span></summary>
+        <p>Ahí entra tu equipo. Filtra lo repetitivo (zona, presupuesto, alquiler o compra) y cuando la consulta se sale de lo previsto, avisa para que la tome una persona.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Sirve para una inmobiliaria de dos personas?<span class="plus">+</span></summary>
+        <p>Sí, de hecho ahí es donde más se nota: cuando cada consulta la tiene que atender la misma persona que además muestra las propiedades, el tiempo pesa el doble.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="pad dark cta-final" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow mk-reveal" style="text-align:center">¿Hablamos?</span>
+    <h2 class="mk-reveal">¿Y si tu inmobiliaria respondiera antes que la competencia?</h2>
+    <p class="mk-reveal">Revisamos cómo entran y se siguen tus consultas hoy, y te decimos qué se puede ordenar y automatizar. Sin compromiso.</p>
+    <div class="row mk-reveal">
+      <a class="btn btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener">Quiero mi diagnóstico →</a>
+    </div>
+    <p class="znote mk-reveal">¿No tenés una inmobiliaria? Igual podés escribirnos, también trabajamos con otros rubros.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="close">
+  <div class="fwrap">
+    <div class="fname">cero.clics</div>
+    <div class="fclaim">
+      Menos tiempo de espera. Más oportunidades de venta.<br>
+      Soluciones y automatización para inmobiliarias.
+    </div>
+    <div class="footer-people">
+      <div class="footer-person">
+        <div class="fp-name">Anabel Britos</div>
+        <div class="fp-links">
+          <a href="https://wa.me/5493512179340" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.3 11.9c0 4.6-3.7 8.3-8.3 8.3-1.4 0-2.8-.4-4-1.1L3.7 20.5l1.4-4.4a8.2 8.2 0 0 1-1.2-4.3c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3Z"/></svg>
+            WhatsApp
+          </a>
+          <a href="mailto:anabelmbritos@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+            anabelmbritos@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="footer-person">
+        <div class="fp-name">Jean Barrère</div>
+        <div class="fp-links">
+          <a href="https://wa.me/5491136826699" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.3 11.9c0 4.6-3.7 8.3-8.3 8.3-1.4 0-2.8-.4-4-1.1L3.7 20.5l1.4-4.4a8.2 8.2 0 0 1-1.2-4.3c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3Z"/></svg>
+            WhatsApp
+          </a>
+          <a href="mailto:jeanjbarrere@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+            jeanjbarrere@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+    <a class="fback" href="#top">Volver arriba ↑</a>
+    <div class="fend">cero.clics · Soluciones para inmobiliarias</div>
+  </div>
+</footer>
+
+<a class="back-top" href="#top" aria-label="Volver al principio" title="Volver al principio">↑</a>
+
+<script src="motion.js"></script>
+<script>
+  (function(){
+    var h = document.getElementById('siteHeader');
+    var hero = document.getElementById('hero');
+    if (!h || !hero) return;
+    var onScroll = function(){
+      var past = window.scrollY > (hero.offsetHeight * 0.7);
+      h.classList.toggle('on', past);
+    };
+    addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+  })();
+
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var close = document.getElementById('menuClose');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    var open = function(){ menu.classList.add('open'); document.body.classList.add('menu-open'); btn.setAttribute('aria-expanded','true'); };
+    var shut = function(){ menu.classList.remove('open'); document.body.classList.remove('menu-open'); btn.setAttribute('aria-expanded','false'); };
+    btn.addEventListener('click', open);
+    close.addEventListener('click', shut);
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  })();
+
+  (function(){
+    var btns = document.querySelectorAll('.btn-solid');
+    if (!btns.length || !('IntersectionObserver' in window)) return;
+    var active = new WeakSet();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var el = entry.target;
+        if (entry.isIntersecting && !active.has(el)) {
+          active.add(el);
+          el.classList.remove('btn-highlight');
+          void el.offsetWidth;
+          el.classList.add('btn-highlight');
+          setTimeout(function(){ el.classList.remove('btn-highlight'); active.delete(el); }, 3700);
+        }
+      });
+    }, { threshold: 0.6 });
+    btns.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
