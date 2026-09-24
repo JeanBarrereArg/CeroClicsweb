@@ -580,6 +580,15 @@
     }, { threshold: 0.6 });
     io.observe(note);
   })();
+
+  (function(){
+    var link = document.querySelector('.fback');
+    if (!link) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  })();
 </script>
 </body>
 </html>
