@@ -60,7 +60,7 @@
   /* ---------- Header ---------- */
   .site-header { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; gap:1.6rem; padding:1rem 1.4rem; color:#fff; background:var(--night); transition:background .35s ease, padding .35s ease, border-color .35s ease; border-bottom:1px solid transparent; }
   .site-header.on { background:var(--night); padding:.65rem 1.4rem; border-color:transparent; }
-  .site-header .brand { display:flex; flex-direction:column; align-items:flex-start; gap:.3rem; text-decoration:none; min-width:0; flex:1 1 auto; overflow:hidden; }
+  .site-header .brand { display:flex; flex-direction:column; align-items:flex-start; gap:.3rem; text-decoration:none; min-width:0; flex:0 1 auto; overflow:hidden; }
   .logo-badge { flex-shrink:0; height:96px; width:auto; border-radius:11px; box-shadow:0 6px 18px -8px rgba(0,0,0,.5); transition:height .3s ease; }
   .site-header.on .logo-badge { height:62px; }
   .brand-tag { font-size:.85rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; opacity:.85; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; transition:opacity .25s, max-height .25s; max-height:2em; }
@@ -77,13 +77,17 @@
   .menu-btn .bars span { display:block; height:1.5px; background:currentColor; }
   .hdr-cta { display:inline-flex; align-items:center; padding:.68rem 1.1rem; border-radius:99px; border:1.5px solid #fff; color:#fff; text-decoration:none; font-weight:700; font-size:.82rem; white-space:nowrap; transition:background .25s, color .25s; }
   .hdr-cta:hover { background:#fff; border-color:#fff; color:var(--night); }
+  .cta-stack { display:flex; flex-direction:column; align-items:center; gap:.55rem; }
+  .hdr-back { color:#fff; text-decoration:none; font-size:.85rem; font-weight:600; opacity:.85; transition:opacity .2s; }
+  .hdr-back:hover { opacity:1; text-decoration:underline; }
 
-  @media (max-width:1180px) { .site-header .navlinks { display:none; } .menu-btn { display:inline-flex; } }
+  @media (max-width:1180px) { .site-header .navlinks { display:none; } }
   @media (max-width:400px) { .menu-btn .mtxt { display:none; } }
 
   /* ---------- Menú mobile ---------- */
-  .mobile-menu { position:fixed; inset:0; z-index:700; background:var(--night); color:var(--paper); display:flex; flex-direction:column; justify-content:space-between; padding:1.3rem 1.4rem 2.4rem; transform:translateY(-100%); transition:transform .5s cubic-bezier(.76,0,.24,1); }
-  .mobile-menu.open { transform:translateY(0); }
+  .mobile-menu { position:fixed; inset:0; z-index:700; background:var(--night); color:var(--paper); display:flex; flex-direction:column; justify-content:space-between; padding:1.3rem 1.4rem 2.4rem; transform:translateY(-100%); visibility:hidden; transition:transform .5s cubic-bezier(.76,0,.24,1), visibility 0s linear .5s; }
+  .mobile-menu.open { transform:translateY(0); visibility:visible; transition:transform .5s cubic-bezier(.76,0,.24,1), visibility 0s; }
+  @media (min-width:1181px) { .mobile-menu { display:none; } }
   .mobile-menu-top { display:flex; align-items:center; justify-content:space-between; }
   .menu-close { background:none; border:0; color:var(--paper); font-size:1.6rem; line-height:1; padding:.3rem; cursor:pointer; }
   .mobile-menu-links { display:flex; flex-direction:column; gap:.3rem; margin-top:2.5rem; }
@@ -276,33 +280,13 @@
 
 <header class="site-header" id="siteHeader">
   <a class="brand" href="#top"><img class="logo-badge" src="assets/logo.jpg" alt="cero.clics"><span class="brand-tag">Soluciones tecnológicas para inmobiliarias</span></a>
-  <nav class="navlinks">
-    <a href="/">← Volver</a>
-    <a href="#proceso">Cómo trabajamos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#nosotros">Quiénes somos</a>
-    <a href="#faq">Preguntas</a>
-  </nav>
   <div class="right">
-    <a class="hdr-cta" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener"><span class="cta-long">Quiero mi diagnóstico</span><span class="cta-short">Diagnóstico</span>&nbsp;→</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><span class="bars"><span></span><span></span></span><span class="mtxt">Menú</span></button>
+    <div class="cta-stack">
+      <a class="hdr-back" href="/">← Volver</a>
+      <a class="hdr-cta" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener"><span class="cta-long">Quiero mi diagnóstico</span><span class="cta-short">Diagnóstico</span>&nbsp;→</a>
+    </div>
   </div>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-top">
-    <a class="brand" href="#top"><img class="logo-badge" src="assets/logo.jpg" alt="cero.clics"><span class="brand-tag">Soluciones tecnológicas para inmobiliarias</span></a>
-    <button class="menu-close" id="menuClose" aria-label="Cerrar menú">✕</button>
-  </div>
-  <nav class="mobile-menu-links">
-    <a href="/">← Volver</a>
-    <a href="#proceso">Cómo trabajamos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#nosotros">Quiénes somos</a>
-    <a href="#faq">Preguntas</a>
-  </nav>
-  <a class="mobile-menu-cta btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener">Quiero mi diagnóstico →</a>
-</div>
 
 <!-- ============ CTA FINAL (movida arriba) ============ -->
 <section class="pad dark cta-final" id="hero">

@@ -26,6 +26,12 @@
   .choices { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
   .choice { display:inline-flex; align-items:center; padding:.95rem 1.8rem; border-radius:99px; border:1.5px solid var(--ivory); color:var(--ivory); text-decoration:none; font-family:'Outfit',sans-serif; font-weight:500; font-size:1.02rem; transition:background .25s, color .25s; }
   .choice:hover { background:var(--ivory); color:var(--night); }
+  @keyframes breathe { 0%,100% { transform:scale(1); box-shadow:0 0 0 rgba(217,104,46,0); } 50% { transform:scale(1.045); box-shadow:0 0 18px 3px rgba(217,104,46,.35); } }
+  .choice { animation:breathe 2.8s ease-in-out infinite; }
+  .choice:nth-child(2) { animation-delay:.4s; }
+  .choice:nth-child(3) { animation-delay:.8s; }
+  .choice:hover { animation-play-state:paused; }
+  @media (prefers-reduced-motion: reduce) { .choice { animation:none; } }
 
   .about { background:var(--bg-alt); color:var(--ink); padding:clamp(3.5rem,9vw,6rem) 1.4rem; }
   .about-wrap { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:1.4rem; }
