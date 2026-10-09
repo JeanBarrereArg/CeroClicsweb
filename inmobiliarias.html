@@ -18,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="motion.css">
 <style>
   :root {
@@ -272,6 +272,27 @@
     .hdr-cta { font-size:.75rem; padding:.5rem .75rem; }
     #hero.cta-final .wrap { padding-left:.8rem; padding-right:.8rem; }
   }
+  /* ---------- Nuevo encabezado (logo + frase) y portada blanca ---------- */
+  .brand2 { display:flex; align-items:center; gap:16px; flex-wrap:wrap; min-width:0; }
+  .wm { font-family:'Outfit',sans-serif; font-weight:600; font-size:1.9rem; letter-spacing:-.02em; line-height:1; text-decoration:none; white-space:nowrap; }
+  .wm .a { color:#f4f1ea; }
+  .wm .b { color:#d9682e; }
+  .vsep { width:1px; height:28px; background:rgba(244,241,234,.3); }
+  .tg2 { font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:#f4f1ea; opacity:.88; }
+  .tg2 i { font-style:normal; color:#d9682e; opacity:1; }
+  .site-header.on { padding:.75rem 1.4rem; }
+  @media (max-width:640px) { .vsep { display:none; } .tg2 { width:100%; font-size:.62rem; } }
+
+  #hero.cta-final { background:#fff; color:var(--night); }
+  @media (min-width:641px) { #hero.cta-final { padding-top:9rem; } }
+  #hero.cta-final h2 { color:var(--night); }
+  #hero.cta-final p { color:#4a5266; }
+  #hero.cta-final .sub { color:#d9682e; }
+  #hero.cta-final .btn-solid { border-color:var(--night); color:var(--night); }
+  #hero.cta-final .btn-solid:hover { background:var(--night); color:#fff; }
+  @keyframes mkBounceGlowOrange { 0%,100% { transform:scale(1); box-shadow:0 0 0 rgba(217,104,46,0); } 50% { transform:scale(1.06); box-shadow:0 0 18px 4px rgba(217,104,46,.4); } }
+  #hero.cta-final .btn-highlight { animation-name:mkBounceGlowOrange; }
+  #hero.cta-final .wrap > p:last-child { margin-bottom:0; }
 </style>
 </head>
 <body>
@@ -279,11 +300,10 @@
 <span id="top"></span>
 
 <header class="site-header" id="siteHeader">
-  <a class="brand" href="#top"><img class="logo-badge" src="assets/logo.jpg" alt="cero.clics"><span class="brand-tag">Soluciones tecnológicas para inmobiliarias</span></a>
+  <div class="brand2"><a class="wm" href="#top"><span class="a">cero</span><span class="b">.clics</span></a><span class="vsep"></span><span class="tg2">Soluciones <i>+</i> Tecnología potenciadas por IA</span></div>
   <div class="right">
     <div class="cta-stack">
       <a class="hdr-back" href="/">← Volver</a>
-      <a class="hdr-cta" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener"><span class="cta-long">Quiero mi diagnóstico</span><span class="cta-short">Diagnóstico</span>&nbsp;→</a>
     </div>
   </div>
 </header>
