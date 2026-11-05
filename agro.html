@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cero.clics — Soluciones para inmobiliarias</title>
-<meta name="description" content="Anabel Britos y Jean Barrère: procesos y tecnología para inmobiliarias. Ayudamos a responder consultas de WhatsApp y portales al instante, y a agendar visitas sin superposiciones ni olvidos.">
+<title>cero.clics — Soluciones para el agro</title>
+<meta name="description" content="Soluciones para el agro: integramos información productiva, administrativa, financiera y comercial en herramientas inteligentes que simplifican la gestión de tu empresa agropecuaria.">
 
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -12,8 +12,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="cero.clics">
-<meta property="og:title" content="cero.clics — Soluciones para inmobiliarias">
-<meta property="og:description" content="Anabel Britos y Jean Barrère: procesos y tecnología para inmobiliarias. Ayudamos a responder consultas de WhatsApp y portales al instante, y a agendar visitas sin superposiciones ni olvidos.">
+<meta property="og:title" content="cero.clics — Soluciones para el agro">
+<meta property="og:description" content="Soluciones para el agro: integramos información productiva, administrativa, financiera y comercial en herramientas inteligentes que simplifican la gestión de tu empresa agropecuaria.">
 <meta property="og:image" content="assets/logo.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,9 +174,21 @@
   .servicios-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
   .servicios-note { text-align:center; margin-top:1.8rem; font-size:24px; font-weight:800; letter-spacing:-.01em; font-family:'Bricolage Grotesque',sans-serif; color:var(--ink); }
   @keyframes notePulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
-  .servicios-note.note-pulse { animation:notePulse 1.6s ease-in-out 2; }
-  @media (prefers-reduced-motion: reduce) { .servicios-note.note-pulse { animation:none; } }
+  .servicios-note { animation:none; transform:none; }
+  section.pad { padding-top:1.75rem; padding-bottom:1.75rem; }
+  #hero.cta-final { padding-bottom:1.75rem; }
+  #hero.cta-final p { margin-bottom:.8rem; }
+  #hero.cta-final h2.hero-title { max-width:none; font-size:clamp(1.55rem,5vw,3.6rem); }
+  #hero.cta-final h2.hero-title em { font-style:normal; color:var(--orange,#d9682e); }
+  .servicios-cta { text-align:center; margin-top:2.2rem; }
+  #servicios .btn-solid { border-color:var(--night); color:var(--night); }
+  #servicios .btn-solid:hover { background:var(--night); color:#fff; }
+  #servicios .btn-highlight { animation-name:mkBounceGlowOrange; }
   .servicios-note .accent { color:var(--sand); }
+  .servicios-note { color:var(--night); line-height:1.2; margin-top:1.4rem; }
+  .servicios-note .note-sub { display:block; margin-top:0; color:var(--night); }
+  .servicios-note .o { color:#d9682e; }
+  .servicios-note + .servicios-cta { margin-top:1.1rem; }
   .svc-card { background:var(--paper); border:1px solid color-mix(in srgb, var(--ink) 10%, transparent); border-radius:18px; padding:clamp(1.3rem,2.5vw,1.6rem); transition:box-shadow .3s; }
   .svc-card:hover { box-shadow:0 20px 44px -22px color-mix(in srgb, var(--clay) 40%, transparent); }
   .svc-card h3 { font-size:1.05rem; margin-bottom:.4rem; }
@@ -237,6 +249,16 @@
   footer.close .fback { display:inline-block; font-size:.85rem; font-weight:700; color:var(--ink-soft); text-decoration:none; border-bottom:1.5px solid color-mix(in srgb, var(--ink-soft) 45%, transparent); padding:.9rem 1.2rem; margin:-.9rem -1.2rem 1.3rem; }
   footer.close .fback:hover { color:var(--ink); border-color:var(--ink); }
   footer.close .fend { font-size:.78rem; color:color-mix(in srgb, var(--ink-soft) 70%, transparent); }
+  footer.close { background:var(--night); }
+  footer.close { padding:2rem 1.4rem 3.2rem; }
+  footer.close .fback { margin-bottom:.9rem; }
+  footer.close .fbrand { margin-bottom:1.4rem !important; }
+  footer.close .fbrand { flex-direction:column; justify-content:center; align-items:center; gap:.9rem; margin-bottom:2.2rem; }
+  footer.close .fbrand .vsep { display:none; }
+  footer.close .fbrand .tg2 { width:auto; }
+  footer.close .fback { color:rgba(244,241,234,.85); border-color:rgba(244,241,234,.4); }
+  footer.close .fback:hover { color:#fff; border-color:#fff; }
+  footer.close .fend { color:rgba(244,241,234,.6); }
 
   /* ---------- Volver arriba ---------- */
   .back-top { position:fixed; right:16px; bottom:16px; z-index:600; width:68px; height:68px; border-radius:50%; display:grid; place-items:center; background:#25D366; border:none; color:#08341f; text-decoration:none; box-shadow:0 6px 18px -6px rgba(0,0,0,.5); }
@@ -284,7 +306,7 @@
   @media (max-width:640px) { .vsep { display:none; } .tg2 { width:100%; font-size:.62rem; } }
 
   #hero.cta-final { background:#fff; color:var(--night); }
-  @media (min-width:641px) { #hero.cta-final { padding-top:9rem; } }
+  @media (min-width:641px) { #hero.cta-final { padding-top:5.6rem; } }
   #hero.cta-final h2 { color:var(--night); }
   #hero.cta-final p { color:#4a5266; }
   #hero.cta-final .sub { color:#d9682e; }
@@ -293,6 +315,18 @@
   @keyframes mkBounceGlowOrange { 0%,100% { transform:scale(1); box-shadow:0 0 0 rgba(217,104,46,0); } 50% { transform:scale(1.06); box-shadow:0 0 18px 4px rgba(217,104,46,.4); } }
   #hero.cta-final .btn-highlight { animation-name:mkBounceGlowOrange; }
   #hero.cta-final .wrap > p:last-child { margin-bottom:0; }
+  /* ---------- Sección "En qué podemos ayudarte" en azul ---------- */
+  #servicios { background:var(--night); }
+  #servicios h2 { color:#fff; }
+  #servicios .eyebrow { color:#d9682e; }
+  #servicios .svc-card { background:var(--night); border:1.5px solid #fff; }
+  #servicios .svc-card h3 { color:#fff; }
+  #servicios .svc-card p { color:rgba(244,241,234,.78); }
+  #servicios .svc-card:hover { box-shadow:0 20px 44px -22px rgba(255,255,255,.35); }
+  #servicios .servicios-note, #servicios .servicios-note .note-sub { color:#fff; }
+  #servicios .servicios-note .o { color:#d9682e; }
+  #servicios .btn-solid { border-color:#fff; color:#fff; }
+  #servicios .btn-solid:hover { background:#fff; color:var(--night); }
 </style>
 </head>
 <body>
@@ -300,7 +334,7 @@
 <span id="top"></span>
 
 <header class="site-header" id="siteHeader">
-  <div class="brand2"><a class="wm" href="#top"><span class="a">cero</span><span class="b">.clics</span></a><span class="vsep"></span><span class="tg2">Soluciones <i>+</i> Tecnología potenciadas por IA</span></div>
+  <div class="brand2"><a class="wm" href="/"><span class="a">cero</span><span class="b">.clics</span></a><span class="vsep"></span><span class="tg2">Soluciones <i>+</i> Tecnología potenciadas por IA</span></div>
   <div class="right">
     <div class="cta-stack">
       <a class="hdr-back" href="/">← Volver</a>
@@ -311,11 +345,11 @@
 <!-- ============ CTA FINAL (movida arriba) ============ -->
 <section class="pad dark cta-final" id="hero">
   <div class="wrap">
-    <h2 class="mk-reveal">Respondé antes que nadie y no pierdas ni un solo cliente.</h2>
-    <p class="sub mk-reveal">Menos tiempo de espera. Más oportunidades de venta.</p>
-    <p class="mk-reveal">Ayudamos a inmobiliarias a convertir más consultas en operaciones exitosas con respuestas en segundos y visitas agendadas sin fricción.</p>
+    <span class="eyebrow mk-reveal" style="display:block;text-align:center;margin-bottom:1rem">Soluciones para el agro</span>
+    <h2 class="mk-reveal hero-title">Toda la información de tu campo,<br><em>en un solo lugar.</em></h2>
+    <p class="mk-reveal">Integramos información productiva, administrativa, financiera y comercial en herramientas inteligentes que simplifican la gestión y te permiten tener una visión completa de tu empresa agropecuaria.</p>
     <div class="row mk-reveal">
-      <a class="btn btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener">Quiero mi diagnóstico →</a>
+      <a class="btn btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20conocer%20las%20soluciones%20para%20el%20agro." target="_blank" rel="noopener">Quiero conocer las soluciones →</a>
     </div>
   </div>
 </section>
@@ -324,14 +358,17 @@
 <section class="pad alt" id="servicios">
   <div class="wrap">
     <span class="eyebrow mk-reveal">En qué podemos ayudarte</span>
-    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">Procesos y tecnología, de la mano.</h2>
+    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">Toda la gestión de tu empresa agropecuaria, conectada.</h2>
     <div class="servicios-grid">
-      <div class="svc-card mk-card mk-reveal"><h3>Respuesta inmediata</h3><p>Pasar de tiempos de respuesta elevados (ej. 2 horas) a atención instantánea, aumentando drásticamente la tasa de cierre de ventas.</p></div>
-      <div class="svc-card mk-card mk-reveal" style="transition-delay:.05s"><h3>Centralización de consultas</h3><p>Unificar la gestión de leads desde múltiples fuentes (WhatsApp, web, portales) para asegurar que ninguna consulta se pierda.</p></div>
-      <div class="svc-card mk-card mk-reveal" style="transition-delay:.1s"><h3>Agenda automatizada</h3><p>Integración del bot con el calendario para agendar visitas automáticamente, evitando conflictos de horarios y trabajo manual.</p></div>
-      <div class="svc-card mk-card mk-reveal" style="transition-delay:.15s"><h3>Seguimiento post-visita</h3><p>Implementación de flujos de seguimiento automáticos para conocer la opinión del cliente y evitar que las oportunidades se enfríen.</p></div>
+      <div class="svc-card mk-card mk-reveal"><h3>Gestión administrativa automatizada</h3><p>Cargá facturas, liquidaciones de granos y comprobantes con una simple fotografía. Automatizamos el procesamiento de información y simplificamos las tareas administrativas.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.05s"><h3>Tablero de gestión productiva</h3><p>Visualizá avances de siembra, evolución de cultivos y cosecha. Integramos información de lotes e imágenes satelitales para monitorear la evolución productiva.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.1s"><h3>Control financiero y administrativo</h3><p>Centralizá Cash Flow, presupuestos, gastos, impuestos, cuentas corrientes y vencimientos. Conocé la situación financiera de tu empresa y anticipá necesidades.</p></div>
+      <div class="svc-card mk-card mk-reveal" style="transition-delay:.15s"><h3>Gestión comercial y decisiones de inversión</h3><p>Controlá ventas, stock de granos y precios de mercado. Simulá alternativas de comercialización, financiación e inversión para evaluar escenarios antes de tomar decisiones.</p></div>
     </div>
-    <p class="servicios-note mk-reveal">¿Sentís que estás perdiendo ventas en alguna otra parte del camino? <span class="accent">Traelo a la entrevista de diagnóstico</span>, analizamos la solución y lo resolvemos.</p>
+    <p class="servicios-note">¿Querés vender más y simplificar la gestión de tu negocio?<span class="note-sub"><span class="o">Contanos qué necesitás</span> y diseñamos una solución adaptada a tu forma de trabajar.</span></p>
+    <div class="servicios-cta mk-reveal">
+      <a class="btn btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20conocer%20las%20soluciones%20para%20el%20agro." target="_blank" rel="noopener">Quiero conocer las soluciones →</a>
+    </div>
   </div>
 </section>
 
@@ -339,86 +376,26 @@
 <section class="pad" id="proceso">
   <div class="wrap">
     <span class="eyebrow mk-reveal">Cómo trabajamos</span>
-    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">Cuatro pasos, sin vueltas.</h2>
+    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.4rem">De la necesidad a la solución, en cuatro pasos.</h2>
     <div class="proceso-grid">
-      <div class="proceso-item mk-reveal"><span class="proceso-num">01</span><div><h3>Escuchamos</h3><p>Nos contás qué tareas o procesos se volvieron un dolor de cabeza para el equipo, con tus palabras. Cero tecnicismos de nuestro lado.</p></div></div>
-      <div class="proceso-item mk-reveal"><span class="proceso-num">02</span><div><h3>Entendemos</h3><p>Revisamos cómo se mueve la operación diaria: consultas, seguimientos, visitas y cierres.</p></div></div>
-      <div class="proceso-item mk-reveal"><span class="proceso-num">03</span><div><h3>Priorizamos</h3><p>Qué frena más el trabajo del equipo y qué conviene resolver primero.</p></div></div>
-      <div class="proceso-item mk-reveal"><span class="proceso-num">04</span><div><h3>Armamos</h3><p>La solución simple y concreta, aplicable desde el primer día, sin cambiarles la forma de trabajar.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">01</span><div><h3>Entendemos tu negocio</h3><p>Nos contás cómo gestionás tu empresa, qué información utilizás y cuáles son las tareas o decisiones que te gustaría simplificar.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">02</span><div><h3>Diseñamos una solución</h3><p>Definimos las herramientas que mejor se adaptan a tu operación y preparamos una demo personalizada para que puedas visualizar cómo funcionarían.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">03</span><div><h3>Te presentamos la propuesta</h3><p>Coordinamos una reunión gratuita de 30 minutos para mostrarte la demo, explicarte la solución y presentarte el presupuesto. Sin compromiso.</p></div></div>
+      <div class="proceso-item mk-reveal"><span class="proceso-num">04</span><div><h3>Implementamos y acompañamos</h3><p>Ponemos las herramientas en marcha, conectamos las fuentes de información y te acompañamos con soporte y seguimiento postventa.</p></div></div>
     </div>
   </div>
-</section>
-
-<!-- ============ LA TECNOLOGÍA EN EL DÍA A DÍA ============ -->
-<section class="pad alt">
-  <div class="wrap">
-    <div class="comp-head">
-      <span class="eyebrow mk-reveal" style="text-align:center">Por qué cero.clics</span>
-      <h2 class="mk-reveal">La tecnología en el día a día.</h2>
-    </div>
-    <div class="comp-grid mk-reveal">
-      <div class="comp-col hoy">
-        <span class="comp-tag">Hoy</span>
-        <p class="txt">Te ofrecen sistemas complejos o plataformas pesadas que prometen revolucionar todo, pero terminan abandonadas porque nadie tiene tiempo de aprenderlas ni encajan con la realidad de la oficina.</p>
-      </div>
-      <div class="comp-col con">
-        <span class="comp-tag">Con cero.clics</span>
-        <p class="txt">Partimos de tus problemas reales que frenan el trabajo del equipo y armamos soluciones simples, concretas y aplicables desde el primer día, sin cambiarles la forma de trabajar ni complicarles la vida.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="pad" id="faq">
-  <div class="wrap">
-    <span class="eyebrow mk-reveal">Preguntas que suelen aparecer</span>
-    <h2 class="mk-reveal" style="font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:2.2rem">¿Te suena?</h2>
-    <div class="faq-list mk-reveal">
-      <details class="faq-item">
-        <summary>¿Tengo que cambiar de sistema para usar esto?<span class="plus">+</span></summary>
-        <p>No. Se conecta con WhatsApp, los portales que ya usás y tu forma de trabajar actual. No hace falta migrar nada.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿El interesado se da cuenta de que le contesta un sistema?<span class="plus">+</span></summary>
-        <p>Sí, y está bien que sea así. Se presenta desde el primer mensaje y avisa que si necesitan hablar con alguien del equipo, los deriva. Lo que valora el que consulta no es creer que le escribe una persona: es que le contesten a las once de la noche con los datos correctos de la propiedad.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Qué pasa si preguntan algo que el sistema no sabe responder?<span class="plus">+</span></summary>
-        <p>Ahí entra tu equipo. Filtra lo repetitivo (zona, presupuesto, alquiler o compra) y cuando la consulta se sale de lo previsto, avisa para que la tome una persona.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Sirve para una inmobiliaria de dos personas?<span class="plus">+</span></summary>
-        <p>Sí, de hecho ahí es donde más se nota: cuando cada consulta la tiene que atender la misma persona que además muestra las propiedades, el tiempo pesa el doble.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ HERO (movido abajo) ============ -->
-<section class="hero hero-center" id="contacto">
-  <div class="hero-content">
-    <span class="eyebrow mk-reveal" style="text-align:center">¿Hablamos?</span>
-    <h1><span class="mk-split hline">Ninguna consulta</span><span class="mk-split hline">debería enfriarse.</span></h1>
-    <p class="sub">Menos tiempo de espera. Más oportunidades de venta.</p>
-    <p class="lead">Ayudamos a inmobiliarias a convertir más consultas en operaciones exitosas con respuestas en segundos y visitas agendadas sin fricción.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-outline-light btn-solid" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener">Quiero mi diagnóstico →</a>
-    </div>
-  </div>
-  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="close">
   <div class="fwrap">
-    <div class="fname">cero.clics</div>
+    <div class="brand2 fbrand"><a class="wm" href="/"><span class="a">cero</span><span class="b">.clics</span></a><span class="vsep"></span><span class="tg2">Soluciones <i>+</i> Tecnología potenciadas por IA</span></div>
     <a class="fback" href="#top">Volver arriba ↑</a>
-    <div class="fend">cero.clics · Soluciones para inmobiliarias</div>
+    <div class="fend">cero.clics · Soluciones personalizadas</div>
   </div>
 </footer>
 
-<a class="back-top" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20pedir%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20inmobiliaria." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp" title="Escribinos por WhatsApp">
+<a class="back-top" href="https://wa.me/5491136826699?text=Hola%2C%20quiero%20conocer%20las%20soluciones%20para%20el%20agro." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp" title="Escribinos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.06L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm0 18.13c-1.66 0-3.2-.46-4.52-1.26l-.32-.19-3.02.79.81-2.95-.21-.3A8.11 8.11 0 0 1 3.87 12C3.87 7.53 7.53 3.87 12 3.87S20.13 7.53 20.13 12 16.47 20.13 12 20.13Zm4.52-6.06c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.98-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.87.85-.87 2.08s.9 2.41 1.02 2.58c.12.16 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
 </a>
 
@@ -474,24 +451,6 @@
       });
     }, { threshold: 0.6 });
     btns.forEach(function(el){ io.observe(el); });
-  })();
-
-  (function(){
-    var note = document.querySelector('.servicios-note');
-    if (!note || !('IntersectionObserver' in window)) return;
-    var active = false;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting && !active) {
-          active = true;
-          note.classList.remove('note-pulse');
-          void note.offsetWidth;
-          note.classList.add('note-pulse');
-          setTimeout(function(){ note.classList.remove('note-pulse'); active = false; }, 3300);
-        }
-      });
-    }, { threshold: 0.6 });
-    io.observe(note);
   })();
 
   (function(){
